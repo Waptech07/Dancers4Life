@@ -17,7 +17,7 @@
       
       body {
         font-family: Arial, sans-serif;
-        background: url('../static/assets/background.jpg') no-repeat fixed center;
+        background: url('{% static 'assets/background.jpg' %}') no-repeat fixed center;
       }
       
       .nav {
@@ -125,7 +125,7 @@
       }
       
       #hero {
-        background-image: url('../static/assets/hero.jpg');
+        background-image: url('{% static 'assets/hero.jpg' %}');
         background-size: 100%;
         background-repeat: no-repeat;
         width: 100%;
