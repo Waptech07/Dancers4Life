@@ -1,7 +1,93 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-  <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+  <style>
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1em;
+    }
+    
+    h1 {
+      font-size: 2.5em;
+    }
+    
+    section {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 2em;
+    }
+    
+    .contact-form {
+      flex: 1;
+      max-width: 500px;
+      background-color: #fff;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    label {
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+    }
+    
+    input,
+    textarea {
+      padding: 0.5em;
+      margin-bottom: 1em;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    button {
+      padding: 1em;
+      font-size: 1.2em;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #555;
+    }
+    
+    .contact-details {
+      flex: 1;
+      max-width: 500px;
+      background-color: #fff;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 2em;
+    }
+    
+    .contact-info {
+      margin-bottom: 1.5em;
+    }
+    
+    h2 {
+      font-size: 1.8em;
+      color: #333;
+      margin-bottom: 0.5em;
+    }
+    
+    p {
+      font-size: 1em;
+      color: #666;
+      margin-bottom: 0.5em;
+    }
+  </style>
   <header>
     <h1>Contact Us</h1>
   </header>
