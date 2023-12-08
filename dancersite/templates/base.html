@@ -17,7 +17,7 @@
       
       body {
         font-family: Arial, sans-serif;
-        background: url('{% static 'assets/background.jpg' %}') no-repeat fixed center;
+        background: url('/media/images/background.jpg') no-repeat fixed center;
       }
       
       .nav {
@@ -125,7 +125,7 @@
       }
       
       #hero {
-        background-image: url('{% static 'assets/hero.jpg' %}');
+        background-image: url('/media/images/hero.jpg');
         background-size: 100%;
         background-repeat: no-repeat;
         width: 100%;
@@ -304,6 +304,10 @@
         align-items: center;
         height: 200px;
         text-align: center;
+      }
+
+      .not-found p {
+        font-size: 2em;
       }
       
       .card,
