@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div>
+    <section id="hero">
+      <div class="hero-content">
+        <h1>Welcome to Dancers4Life Club</h1>
+        <p>Discover the joy of dancing and join our vibrant community!</p>
+        <a href="{% url 'classes' %}" class="cta-button">Explore Classes</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about-content">
+        <h2>About Us</h2>
+        <p>Welcome to Dancers4Life Club, where passion meets movement! We are a vibrant community of dance enthusiasts dedicated to spreading joy, fostering creativity, and building lasting connections through the art of dance.</p>
+        <p>Our mission is to create a positive and inclusive space for individuals of all ages and backgrounds to express themselves through various dance styles. Whether you're a seasoned dancer or just taking your first steps, our club offers a diverse range of classes and events to suit every level and interest.</p>
+        <p>At Dancers4Life, we believe in the transformative power of dance to inspire, uplift, and bring people together. Join us on this exciting journey, and let's dance our way to a healthier, happier, and more connected community!</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="color: #f00;">Dance Classes</h2>
+      <div id="homeClassContainer">
+        {% for class in classes %}
+          <div class="card">
+            <img src="{{ class.image.url }}" alt="{{ class.name }} Class" />
+            <h3 class="className">{{ class.name }}</h3>
+            <div class="card-content">
+              <h3>{{ class.name }} Class</h3>
+              <p>Description: {{ class.description }}</p>
+              <p>Start Date: {{ class.startDate }}</p>
+              <p>Duration: {{ class.duration }}</p>
+              <p>Price: ${{ class.price }}</p>
+              <button>Register</button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="events-section">
+      <div class="content">
+        <h2>Join Our Events</h2>
+        <div class="events-content">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <a href="{% url 'events' %}" class="cta-button">Events</a>
+          <img src="{% static 'assets/ballet.jpg' %}" class="event-image" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Events</h2>
+      <div id="eventContainer">
+        {% for event in events %}
+          <div class="event-card">
+            <img src="{{ event.image.url }}" alt="{{ event.name }}" />
+            <h3 class="className">{{ event.name }}</h3>
+            <div class="event-card-content">
+              <h3>{{ event.name }}</h3>
+              <p>Date: {{ event.date|date:'F j, Y' }}</p>
+              <p>Location: {{ event.location }}</p>
+              <p>Tickets: ${{ event.ticketPrice }}</p>
+              <button>Purchase Ticket</button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+{% endblock %}

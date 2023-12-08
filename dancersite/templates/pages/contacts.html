@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/contact.css' %}" />
+  <header>
+    <h1>Contact Us</h1>
+  </header>
+
+  <section>
+    <section class="contact-form">
+      <form action="#" method="post">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <section class="contact-details">
+      <div class="contact-info">
+        <h2>Our Office</h2>
+        <p>123 Beautiful Street, Cityville</p>
+        <p>Country</p>
+      </div>
+
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p>Email: info@example.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+      </div>
+    </section>
+  </section>
+
+  <section>
+    <div class="additional-content">
+      <h2>Additional Information</h2>
+      <p>Feel free to reach out to us for any inquiries or collaborations. We are here to assist you!</p>
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  {% if not_found_message %}
+    <section style="margin-top: 70px;">
+      <h2>EVENTS</h2>
+      <div class="search-container">
+        <form action="{% url 'events' %}" method="get">
+          <div class="query-box">
+            <input type="search" class="search-box" name="search" placeholder="Search..." value="{{ request.GET.search }}" required />
+            <button type="submit" class="search-button">Search</button>
+          </div>
+        </form>
+      </div>
+      <div class="not-found">
+        <p>{{ not_found_message }}</p>
+      </div>
+    </section>
+  {% else %}
+    <section style="margin-top: 70px;">
+      <h2>EVENTS</h2>
+      <div class="search-container">
+        <form action="{% url 'events' %}" method="get">
+          <div class="query-box">
+            <input type="search" class="search-box" name="search" placeholder="Search..." value="{{ request.GET.search }}" required />
+            <button type="submit" class="search-button">Search</button>
+          </div>
+        </form>
+      </div>
+      <div id="eventContainer">
+        {% for event in events %}
+          <div class="event-card">
+            <img src="{{ event.image.url }}" alt="{{ event.name }}" />
+            <h3 class="className">{{ event.name }}</h3>
+            <div class="event-card-content">
+              <h3>{{ event.name }}</h3>
+              <p>Date: {{ event.date|date:'F j, Y' }}</p>
+              <p>Location: {{ event.location }}</p>
+              <p>Tickets: ${{ event.ticketPrice }}</p>
+              <button>Purchase Ticket</button>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <div class="mx-auto w-25">
+      {% if page.has_other_pages %}
+        <ul class="pagination">
+          {% if page.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="{{ previous_url }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+            </li>
+          {% endif %}
+
+          {% for num in page.paginator.page_range %}
+            <li class="page-item{% if num == page.number %}{% endif %}">
+              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+          {% endfor %}
+
+          {% if page.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="{{ next_url }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}
