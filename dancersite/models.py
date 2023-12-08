@@ -1,9 +1,5 @@
 import os
 from django.db import models
-from django.contrib.auth.models import User
-from datetime import date
-from django.utils import timezone
-from django.core.validators import FileExtensionValidator
 
 # Create your models here.
 
@@ -26,4 +22,4 @@ class Event(models.Model):
     ticketPrice = models.IntegerField()
 
     def __str__(self):
-            return f"{self.name}"   
+            return f"{self.name}"

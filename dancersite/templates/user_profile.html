@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <style>
+    .profile-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      width: 100%;
+      margin: 100px auto;  /* Center the profile container */
+      text-align: center;
+    }
+    
+    h1 {
+      color: #333;
+    }
+    
+    strong {
+      color: #333;
+    }
+
+    p {
+      color: #d79600;
+      margin-bottom: 15px;
+    }
+
+    .section-heading {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+
+  <div class="profile-container">
+    <h1>User Profile</h1>
+
+    <div class="user-details">
+      <p>
+        <strong>Username:</strong> {{ user.username }}
+      </p>
+      <p>
+        <strong>Email:</strong> {{ user.email }}
+      </p>
+      <p>
+        <strong>First Name:</strong> {{ user.first_name }}
+      </p>
+      <p>
+        <strong>Last Name:</strong> {{ user.last_name }}
+      </p>
+
+      <!-- Add more sections for additional user details -->
+      <div class="section-heading">Additional Details</div>
+      <p>
+        <strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}
+      </p>
+      <!-- Add more user details as needed -->
+
+      <!-- Link to logout -->
+      <div class="login-container">
+        <a href="{% url 'logout' %}" class="login">Logout</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

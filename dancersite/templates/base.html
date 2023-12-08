@@ -148,7 +148,8 @@
         color: #f7f7f7;
       }
       
-      #hero .cta-button {
+      #hero .cta-button,
+      #events-section .events-content .cta-button {
         display: inline-block;
         padding: 15px 30px;
         background-color: #fff;
@@ -159,7 +160,8 @@
         transition: background-color 0.3s;
       }
       
-      #hero .cta-button:hover {
+      #hero .cta-button:hover,
+      #events-section .events-content .cta-button:hover {
         background-color: #db8712;
         color: #fff;
       }
@@ -305,7 +307,7 @@
         height: 200px;
         text-align: center;
       }
-
+      
       .not-found p {
         font-size: 2em;
       }
@@ -658,7 +660,8 @@
           margin-bottom: 20px;
         }
       
-        #hero .cta-button {
+        #hero .cta-button,
+        #events-section .events-content .cta-button {
           padding: 8px 16px;
         }
       
@@ -707,7 +710,8 @@
           font-size: 14px;
         }
       
-        #hero .cta-button {
+        #hero .cta-button,
+        #events-section .events-content .cta-button {
           padding: 6px 12px;
         }
       
@@ -764,9 +768,16 @@
             <a href="{% url 'contact' %}">Contact Us</a>
           </li>
         </ul>
-        <div class="login-container">
-          <a href="/" class="login">login</a>
-        </div>
+        {% if user.is_authenticated %}
+          <div class="login-container">
+            <a href="{% url 'profile' %}" class="login">Profile</a>
+          </div>
+        {% else %}
+          <div class="login-container">
+            <a href="{% url 'login' %}" class="login">Login</a>
+          </div>
+        {% endif %}
+
         <!-- menu-icon -->
         <div class="toggle"></div>
       </div>
@@ -793,7 +804,7 @@
               <a href="{% url 'events' %}">Events</a>
             </li>
             <li>
-              <a href="">About</a>
+              <a href="{% url 'about' %}">About</a>
             </li>
             <li>
               <a href="{% url 'contact' %}">Contact Us</a>

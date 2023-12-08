@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <style>
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      margin-top: 10px;
+      color: #333;
+    }
+
+    input {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #d67c00;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #c06014;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    a {
+      color: #d67c00;
+      text-decoration: none;
+    }
+  </style>
+  <div class="container">
+    <form action="{% url 'login' %}" method="post">
+      {% csrf_token %}
+      <h2>Login</h2>
+
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit">Login</button>
+
+      <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+    </form>
+  </div>
+{% endblock %}

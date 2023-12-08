@@ -35,9 +35,9 @@
             <h3 class="className">{{ event.name }}</h3>
             <div class="event-card-content">
               <h3>{{ event.name }}</h3>
-              <p>Date: {{ event.date|date:'F j, Y' }}</p>
-              <p>Location: {{ event.location }}</p>
-              <p>Tickets: ${{ event.ticketPrice }}</p>
+              <p><strong>Date:</strong> {{ event.date|date:'F j, Y' }}</p>
+              <p><strong>Location:</strong> {{ event.location }}</p>
+              <p><strong>Tickets:</strong> ${{ event.ticketPrice }}</p>
               <button>Purchase Ticket</button>
             </div>
           </div>
