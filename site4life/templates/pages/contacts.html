@@ -9,39 +9,41 @@
       padding: 1em;
       margin-top: 80px;
     }
-    
+
     h1 {
       font-size: 2.5em;
     }
-    
+
     section {
-      display: flex;
-      justify-content: space-around;
+      
       flex-wrap: wrap;
-      margin: 2em;
     }
-    
-    .contact-form {
+
+    .contact-form,
+    .contact-details {
       flex: 1;
-      max-width: 500px;
+      width: 100%;
+      max-width: 600px;  /* Adjust the max-width based on your design */
+      margin: 0 auto;
       background-color: #fff;
-    
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       border: 2px solid #c0c0c0;
+      margin-top: 2em;
     }
-    
+
     form {
       display: flex;
       flex-direction: column;
+      padding: 2em;
     }
-    
+
     label {
       font-size: 1.2em;
       margin-bottom: 0.5em;
       color: #d67c00;
     }
-    
+
     input,
     textarea {
       width: 100%;
@@ -51,7 +53,7 @@
       border: 1px solid #c0c0c0;
       border-radius: 4px;
     }
-    
+
     button {
       width: 100%;
       padding: 1em;
@@ -62,42 +64,81 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    
-    button:hover {
-      background-color: #aaa9ad;
-    }
-    
-    .contact-details {
-      flex: 1;
-      max-width: 500px;
-      background-color: #fff;
-      padding: 2em;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      border: 2px solid #c0c0c0;
-      margin-top: 2em;
-    }
-    
+
     .contact-info {
       margin-bottom: 1.5em;
+      padding: 1.5em;
     }
-    
+
     h2 {
       font-size: 1.8em;
       color: #d67c00;
       margin-bottom: 0.5em;
     }
-    
+
     p {
       font-size: 1em;
       color: #666;
       margin-bottom: 0.5em;
     }
-    
+
     .additional-content {
+      margin-bottom: 1.5em;
       color: #d67c00;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+      header {
+        margin-top: 40px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      .contact-form,
+      .contact-details {
+        margin-top: 1em;
+      }
+
+      form {
+        padding: 1em;
+      }
+
+      label {
+        font-size: 1em;
+      }
+
+      input,
+      textarea {
+        font-size: 0.9em;
+      }
+
+      button {
+        font-size: 1em;
+      }
+
+      .contact-info {
+        padding: 1em;
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+
+      p {
+        font-size: 0.9em;
+      }
+
+      .additional-content {
+        font-size: 1em;
+      }
     }
   </style>
+
   <header>
     <h1>Contact Us</h1>
   </header>
@@ -137,7 +178,7 @@
   <section>
     <div class="additional-content">
       <h2>Additional Information</h2>
-      <p>Feel free to reach out to us for any inquiries or collaborations. We are here to assist you!</p>
+      <p style="color: #fff;">Feel free to reach out to us for any inquiries or collaborations. We are here to assist you!</p>
     </div>
   </section>
 {% endblock %}
