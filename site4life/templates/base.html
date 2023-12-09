@@ -20,7 +20,7 @@
       
       body {
         font-family: 'Montserrat', sans-serif;
-        background: url('/media/images/background.jpg') no-repeat fixed center;
+        background: url('/media/images/background.jpg') no-repeat fixed center/cover;
       }
       
       .nav {
@@ -161,6 +161,7 @@
         font-weight: bold;
         border-radius: 30px;
         transition: background-color 0.3s;
+        margin-bottom: 20px;
       }
       
       #hero .cta-button:hover,
@@ -225,13 +226,11 @@
         font-size: 1.2em;
         margin-bottom: 40px;
         text-align: justify;
-        letter-spacing: 1px;
         margin-right: 20px;
         color: #fff;
       }
       
       #events-section .event-image {
-        max-width: 300px;
         height: 300px;
         margin-left: 20px;
         float: right;
@@ -737,22 +736,13 @@
         }
       }
       
-      @media (max-width: 400px) {
-        h1,
-        h2 {
-          font-size: 10px;
-        }
-      
+      @media (max-width: 1200px) {      
         img {
           height: 500px;
         }
       
         .logo {
           font-size: 10px;
-        }
-      
-        .space {
-          display: block;
         }
       }
     </style>
@@ -761,8 +751,13 @@
   <body>
     <nav>
       <div class="nav">
-        <a class="logo" href="/">𝔻𝔸ℕℂ𝔼ℝ𝕊<span class="four">𝟜</span><span>𝕃𝕀𝔽𝔼</span><span class="space"></span>𝕮𝖑𝖚𝖇</a>
+        <a class="logo" href="/">𝔻𝔸ℕℂ𝔼ℝ𝕊<span class="four">𝟜</span><span>𝕃𝕀𝔽𝔼</span></a>
         <ul class="menu">
+          {% if user.is_authenticated %}
+            <li>
+              <a href="{% url 'profile' %}">Profile</a>
+            </li>
+          {% endif %}
           <li>
             <a href="/">Home</a>
           </li>
@@ -781,7 +776,7 @@
         </ul>
         {% if user.is_authenticated %}
           <div class="login-container">
-            <a href="{% url 'profile' %}" class="login">Profile</a>
+            <a href="{% url 'logout' %}" class="login">Logout</a>
           </div>
         {% else %}
           <div class="login-container">

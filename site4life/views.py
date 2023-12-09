@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.core.paginator import Paginator
 from django.http import Http404
+from django.db.models import Q
 from .models import *
 
 # Create your views here.
@@ -180,8 +181,10 @@ def user_profile(request):
     # Get the current authenticated user
     user = request.user
     
-    # Fetch tickets purchased by the user
-    tickets = Ticket.objects.filter(purchaser_name=user.get_full_name() or user.username, purchaser_email=user.email)
+    # Fetch tickets purchased by the user email
+    tickets = Ticket.objects.filter(
+    (Q(purchaser_name=user.get_full_name()) | Q(purchaser_name=user.username)) & Q(purchaser_email=user.email)
+)
     return render(request, 'user_profile.html', {"user": user, "tickets": tickets})
 
 @login_required(login_url="login")
