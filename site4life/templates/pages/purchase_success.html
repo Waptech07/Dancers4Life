@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .success-message {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  </style>
+  <div class="container">
+    <h2>Purchase Successful</h2>
+    <div class="success-message">
+      <p>Congratulations! You have successfully purchased a ticket. Enjoy the event!</p>
+    </div>
+  </div>
+{% endblock %}

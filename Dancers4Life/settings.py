@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "dancersite"
+    "site4life"
 ]
 
 MIDDLEWARE = [
@@ -136,3 +136,12 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# # Email settings
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'your_email_host'  # Update with your email provider's SMTP server
+# EMAIL_PORT = 587  # Update with the appropriate port for your email provider
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = 'your_email@example.com'  # Update with your email address
+# EMAIL_HOST_PASSWORD = 'your_email_password'  # Update with your email password
+# DEFAULT_FROM_EMAIL = 'your_email@example.com'  # Update with your email address

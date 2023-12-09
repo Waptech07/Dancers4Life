@@ -9,6 +9,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js" integrity="sha512-+k1pnlgt4F1H8L7t3z95o3/KO+o78INEcXTbnoJQ/F2VqDVhWoaiVml/OEHv9HsVgxUaVW+IbiZPUJQfF/YxZw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>DANCERS4LIFE CLUB</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+      
       * {
         padding: 0;
         margin: 0;
@@ -16,7 +19,7 @@
       }
       
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Montserrat', sans-serif;
         background: url('/media/images/background.jpg') no-repeat fixed center;
       }
       
@@ -396,8 +399,9 @@
         font-size: 1em;
       }
       
-      .card-content button,
-      .event-card-content button {
+      .card-content a,
+      .event-card-content a {
+        text-decoration: none;
         padding: 10px;
         background-color: transparent;
         color: #f00;
@@ -407,10 +411,17 @@
         transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       }
       
-      .card-content button:hover,
-      .event-card-content button:hover {
+      .card-content a:hover,
+      .event-card-content a:hover {
         background-color: #f00;
         color: #fff;
+      }
+      
+      .disabled-link {
+        pointer-events: none;
+        color: #999;
+        text-decoration: none;
+        cursor: not-allowed;
       }
       
       .card:after,

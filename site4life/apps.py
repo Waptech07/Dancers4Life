@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class DancersiteConfig(AppConfig):
+class Site4LifeConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "dancersite"
+    name = "site4life"

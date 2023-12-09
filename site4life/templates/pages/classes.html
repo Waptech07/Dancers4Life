@@ -4,9 +4,10 @@
 {% block content %}
   {% if not_found_message %}
     <section style="margin-top: 70px;">
-      <h2>EVENTS</h2>
+      <h2>Dance Classes</h2>
       <div class="search-container">
-        <form action="{% url 'events' %}" method="get">
+        <form action="{% url 'classes' %}" method="get">
+          {% csrf_token %}
           <div class="query-box">
             <input type="search" class="search-box" name="search" placeholder="Search..." value="{{ request.GET.search }}" required />
             <button type="submit" class="search-button">Search</button>
@@ -19,26 +20,31 @@
     </section>
   {% else %}
     <section style="margin-top: 70px;">
-      <h2>EVENTS</h2>
+      <h2>Dance Classes</h2>
       <div class="search-container">
-        <form action="{% url 'events' %}" method="get">
+        <form action="{% url 'classes' %}" method="get">
           <div class="query-box">
             <input type="search" class="search-box" name="search" placeholder="Search..." value="{{ request.GET.search }}" required />
             <button type="submit" class="search-button">Search</button>
           </div>
         </form>
       </div>
-      <div id="eventContainer">
-        {% for event in events %}
-          <div class="event-card">
-            <img src="{{ event.image.url }}" alt="{{ event.name }}" />
-            <h3 class="className">{{ event.name }}</h3>
-            <div class="event-card-content">
-              <h3>{{ event.name }}</h3>
-              <p><strong>Date:</strong> {{ event.date|date:'F j, Y' }}</p>
-              <p><strong>Location:</strong> {{ event.location }}</p>
-              <p><strong>Tickets:</strong> ${{ event.ticketPrice }}</p>
-              <button>Purchase Ticket</button>
+      <div id="classContainer">
+        {% for class in classes %}
+          <div class="card">
+            <img src="{{ class.image.url }}" alt="{{ class.name }} Class" />
+            <h3 class="className">{{ class.name }}</h3>
+            <div class="card-content">
+              <h3>{{ class.name }} Class</h3>
+              <p><strong>Description:</strong> {{ class.description }}</p>
+              <p><strong>Start Date:</strong> {{ class.startDate }}</p>
+              <p><strong>Duration:</strong> {{ class.duration }}</p>
+              <p style="margin-bottom: 10px;"><strong>Price: $</strong>{{ class.price }}</p>
+              {% if user.is_authenticated %}
+              <button class="disabled-link">Registered</button>
+              {% else %}
+              <a href="{% url 'register' %}">Register</a>
+              {% endif %}
             </div>
           </div>
         {% endfor %}

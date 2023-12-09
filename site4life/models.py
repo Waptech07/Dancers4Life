@@ -23,3 +23,13 @@ class Event(models.Model):
 
     def __str__(self):
             return f"{self.name}"
+        
+class Ticket(models.Model):
+    event = models.ForeignKey('Event', on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+    purchaser_name = models.CharField(max_length=255)
+    purchaser_email = models.EmailField()
+    purchase_date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+            return f'"{self.event}" ticket purchased by "{self.purchaser_name}"'

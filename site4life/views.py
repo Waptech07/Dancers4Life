@@ -1,9 +1,11 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.core.paginator import Paginator
+from django.http import Http404
 from .models import *
 
 # Create your views here.
@@ -179,3 +181,52 @@ def user_profile(request):
     # Get the current authenticated user
     user = request.user
     return render(request, 'user_profile.html', {"user": user})
+
+@login_required(login_url="login")
+def purchase_ticket(request, event_id):
+    # events = Event.objects.all()
+    try:
+        # Attempt to retrieve the event with the given ID
+        event = Event.objects.get(pk=event_id)
+    except Event.DoesNotExist:
+        # If the event does not exist, raise a 404 error
+        raise Http404("Event does not exist")
+    
+    if request.method == 'POST':
+        # Process the form data
+        quantity = request.POST.get('quantity')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+
+        # Save ticket details to the database
+        ticket = Ticket.objects.create(
+            event=event,
+            quantity=quantity,
+            purchaser_name=name,
+            purchaser_email=email
+        )
+
+        # Send email with ticket details
+        # send_ticket_email(ticket)
+
+        # Redirect to a success page or home page
+        messages.success(request, 'Ticket purchased successfully!')
+        return redirect('purchase_success')  # Change 'success_page' to the actual URL
+
+    return render(request, 'pages/purchase_ticket.html', {'events': events})
+
+@login_required(login_url="login")
+def send_ticket_email(ticket):
+    subject = 'Your Ticket Purchase Details'
+    message = f'Thank you for purchasing a ticket for {ticket.event.name}. ' \
+              f'Your ticket details: Event: {ticket.event.name}, Quantity: {ticket.quantity}, ' \
+              f'Purchaser: {ticket.purchaser_name}, Purchase Date: {ticket.purchase_date}. ' \
+              'Enjoy the event!'
+    from_email = 'info@dancers4life.com'  # Update with your email address
+    to_email = [ticket.purchaser_email]
+
+    send_mail(subject, message, from_email, to_email)
+    
+@login_required(login_url="login")
+def purchase_success(request):
+    return render(request, 'pages/purchase_success.html')
