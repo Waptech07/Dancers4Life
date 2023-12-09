@@ -177,10 +177,12 @@ def logout(request):
 
 @login_required(login_url="login")
 def user_profile(request):
-    
     # Get the current authenticated user
     user = request.user
-    return render(request, 'user_profile.html', {"user": user})
+    
+    # Fetch tickets purchased by the user
+    tickets = Ticket.objects.filter(purchaser_name=user.get_full_name() or user.username, purchaser_email=user.email)
+    return render(request, 'user_profile.html', {"user": user, "tickets": tickets})
 
 @login_required(login_url="login")
 def purchase_ticket(request, event_id):

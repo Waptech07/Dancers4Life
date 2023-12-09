@@ -10,7 +10,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       max-width: 600px;
       width: 100%;
-      margin: 100px auto;  /* Center the profile container */
+      margin: 100px auto 30px auto; /* Center the profile container */
       text-align: center;
     }
     
@@ -21,16 +21,47 @@
     strong {
       color: #333;
     }
-
+    
     p {
       color: #d79600;
       margin-bottom: 15px;
     }
-
+    
     .section-heading {
       font-size: 18px;
       font-weight: bold;
       margin-top: 20px;
+    }
+    
+    .purchased-tickets-container {
+      margin-top: 20px;
+    }
+    
+    .ticket-list {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .ticket-item {
+      background-color: #aaa9ad;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      text-align: left;
+      cursor: pointer;
+      transition: box-shadow 0.5s;
+    }
+    
+    .ticket-item:hover {
+      box-shadow: 0 7px 5px 0 rgba(0, 0, 0, 0.7);
+    }
+    
+    .ticket-item strong {
+      color: #333;
+    }
+    
+    .no-tickets {
+      color: #777;
     }
   </style>
 
@@ -50,13 +81,28 @@
       <p>
         <strong>Last Name:</strong> {{ user.last_name }}
       </p>
-
-      <!-- Add more sections for additional user details -->
-      <div class="section-heading">Additional Details</div>
+      <div class="section-heading">Other Details</div>
       <p>
-        <strong>Joined:</strong> {{ user.date_joined|date:"F d, Y" }}
+        <strong>Joined:</strong> {{ user.date_joined|date:'F d, Y' }}
       </p>
       <!-- Add more user details as needed -->
+
+      <h2 class="section-heading">Purchased Tickets</h2>
+      <div class="purchased-tickets-container">
+        {% if tickets %}
+          <ul class="ticket-list">
+            {% for ticket in tickets %}
+              <li class="ticket-item">
+                <strong>Event:</strong> {{ ticket.event.name }}<br />
+                <strong>Quantity:</strong> {{ ticket.quantity }}<br />
+                <strong>Purchase Date:</strong> {{ ticket.purchase_date }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="no-tickets">No tickets purchased yet.</p>
+        {% endif %}
+      </div>
 
       <!-- Link to logout -->
       <div class="login-container">
