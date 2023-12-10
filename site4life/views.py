@@ -1,3 +1,4 @@
+from django.conf import settings    
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.models import auth, User
 from django.contrib.auth.decorators import login_required
@@ -220,14 +221,13 @@ def purchase_ticket(request, event_id):
 
     return render(request, 'pages/purchase_ticket.html', {'events': events})
 
-@login_required(login_url="login")
 def send_ticket_email(ticket):
     subject = 'Your Ticket Purchase Details'
     message = f'Thank you for purchasing a ticket for {ticket.event.name}. ' \
               f'Your ticket details: Event: {ticket.event.name}, Quantity: {ticket.quantity}, ' \
               f'Purchaser: {ticket.purchaser_name}, Purchase Date: {ticket.purchase_date}. ' \
               'Enjoy the event!'
-    from_email = 'info@dancers4life.com'  # Update with your email address
+    from_email = settings.EMAIL_HOST_USER  # Update with your email address
     to_email = [ticket.purchaser_email]
 
     send_mail(subject, message, from_email, to_email)

@@ -44,8 +44,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
@@ -137,11 +137,11 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# # Email settings
+# Email settings
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'your_email_host'  # Update with your email provider's SMTP server
+# EMAIL_HOST = 'smtp.gmail.com'  # Update with your email provider's SMTP server
 # EMAIL_PORT = 587  # Update with the appropriate port for your email provider
 # EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'your_email@example.com'  # Update with your email address
-# EMAIL_HOST_PASSWORD = 'your_email_password'  # Update with your email password
+# EMAIL_HOST_USER = 'info@dancers4life.com'  # Update with your email address
+# EMAIL_HOST_PASSWORD = ''  # Update with your email password
 # DEFAULT_FROM_EMAIL = 'your_email@example.com'  # Update with your email address
