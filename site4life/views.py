@@ -213,7 +213,7 @@ def purchase_ticket(request, event_id):
         )
 
         # Send email with ticket details
-        # send_ticket_email(ticket)
+        send_ticket_email(ticket)
 
         # Redirect to a success page or home page
         messages.success(request, 'Ticket purchased successfully!')
