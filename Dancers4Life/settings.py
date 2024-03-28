@@ -82,8 +82,8 @@ DATABASES = {
     }
 }
 
-DATABASES["default"] = dj_database_url.parse("postgres://dancers4life:eoGAmicAe5dPbafPoZjIBsjAzmTkL4D5@dpg-clpd17hoh6hc73c12u10-a.oregon-postgres.render.com/dancers4life")
-# postgres://dancers4life:eoGAmicAe5dPbafPoZjIBsjAzmTkL4D5@dpg-clpd17hoh6hc73c12u10-a.oregon-postgres.render.com/dancers4life
+DATABASES["default"] = dj_database_url.parse("postgres://dancers4life:G6HBWiYkhwyyeeYOjxarPHEJvO3ITufm@dpg-co2jq7cf7o1s73ck4asg-a.oregon-postgres.render.com/dancers4life_ub15")
+# postgres://dancers4life:G6HBWiYkhwyyeeYOjxarPHEJvO3ITufm@dpg-co2jq7cf7o1s73ck4asg-a.oregon-postgres.render.com/dancers4life_ub15
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
